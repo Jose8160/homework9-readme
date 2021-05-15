@@ -1,57 +1,52 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const path = require('path')
-const generateMarkdown = require('./utils/generateMarkdown')
+const path = require("path");
+const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
-inquirer.prompt([
-  {
-    type: "input",
-    message: "Project Title?",
-    name: "title",
-  },
-  
-  {
-    type: "input",
-    message: "Project Description?",
-    name: "description",
-  },
+inquirer
+  .prompt([
+    {
+      type: "input",
+      message: "Project Title?",
+      name: "title",
+    },
 
     {
-    type: "input",
-    message: "What was your motivation?",
-    name: "motivation",
-  },
+      type: "input",
+      message: "Project Description?",
+      name: "description",
+    },
 
-  {
-    type: "input",
-    message: "Why did you build this project?",
-    name: "build",
-  },
+    {
+      type: "input",
+      message: "How do you use this app?",
+      name: "Usage",
+    },
 
-  {
-    type: "input",
-    message: "What problem does it solve",
-    name: "solve",
-  },
+    {
+      type: "input",
+      message: "How do you install your app?",
+      name: "installation",
+    },
 
-  {
-    type: "input",
-    message: "What did you learn?",
-    name: "learn",
-  },
+    {
+      type: "input",
+      message: "Who contributed to this project",
+      name: "contributed",
+    },
 
-  {
-    type: "input",
-    message: "What makes your project stand out?",
-    name: "standout",
-  },
+    {
+      type: "input",
+      message: "What commands are needed to test this app",
+      name: "contributed",
+    },
 
-  {
-    type: "list",
-    message: "choose type of project license?",
-    name: "license",
-    choices: [
+    {
+      type: "list",
+      message: "choose type of project license?",
+      name: "license",
+      choices: [
         "MIT",
         "Other",
         "GPLv2",
@@ -62,14 +57,26 @@ inquirer.prompt([
         "BSD 2-clause",
         "LGPLv3",
         "AGPLv3",
+        "None",
       ],
-  },
+    },
 
-])
+    {
+      type: "input",
+      message: "Github Username",
+      name: "git",
+    },
 
-.then((data)=> {
-    console.log(data)
-    writeToFile('README.md', generateMarkdown(data))
+    {
+      type: "input",
+      message: "E-mail:",
+      name: "email",
+    },
+  ])
+
+  .then((data) => {
+    console.log(data);
+    writeToFile("README.md", generateMarkdown(data));
     // const{
     //     title,
     //     description,
@@ -81,21 +88,14 @@ inquirer.prompt([
     //     license,
     // } = data;
     // fs.writeToFile()
-})
-
-
-
-
-
-
+  });
 
 // const questions = [];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
-
 
 // TODO: Create a function to initialize app
 function init() {}
