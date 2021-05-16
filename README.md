@@ -1,5 +1,9 @@
 # README Generator ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
+[Link to deployable application](https://github.com/Jose8160/homework9-readme)
+
+![Screenshot](README.png)
+
 # Description
 
 Application that generates a professional README
